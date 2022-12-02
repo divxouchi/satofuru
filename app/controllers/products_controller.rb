@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:update, :destroy]
+  before_action :set_product, only: :update
 
   def index
     @products = Product.all
@@ -25,17 +25,6 @@ class ProductsController < ApplicationController
     end
     
   end
-
-  def destroy
-    @product.destroy
-    render json: { 
-      status: 'SUCCESS', 
-      message: 'Deleted the product', 
-      data: @product
-    }
-
-  end
-
 
 
   private
