@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @puroduct.update(product_params)
+    if @product.update(product_params)
       render json: @product
     else
       render json: @product.errors, status: :unprocessable_entity
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
     render json: { 
       status: 'SUCCESS', 
       message: 'Deleted the product', 
-      data: @product
+      
     }
 
   end
@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @puroduct = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
 
