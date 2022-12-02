@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: :update
+  before_action :set_product, only: [:update, :destroy]
 
   def index
     @products = Product.all
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @puroduct.update(product_params)
+    if @product.update(product_params)
       render json: @product
     else
       render json: @product.errors, status: :unprocessable_entity
@@ -26,6 +26,15 @@ class ProductsController < ApplicationController
     
   end
 
+  def destroy
+    @product.destroy
+    render json: { 
+      status: 'SUCCESS', 
+      message: 'Deleted the product'
+      
+    }
+
+  end
 
   private
 
@@ -35,7 +44,7 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @puroduct = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
 
