@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
     @product.destroy
     render json: { 
       status: 'SUCCESS', 
-      message: 'Deleted the product', 
+      message: 'Deleted the product'
       
     }
 
